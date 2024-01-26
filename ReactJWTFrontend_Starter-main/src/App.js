@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import JournalPage from "./pages/JournalPage/JournalPage";
+import TaskPage from "./pages/TaskPage/TaskPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -33,6 +34,14 @@ function App() {
           element={
             <PrivateRoute>
               <JournalPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/tasks"
+          element={
+            <PrivateRoute>
+              <TaskPage />
             </PrivateRoute>
           }
         />
