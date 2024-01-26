@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import JournalPage from "./pages/JournalPage/JournalPage";
 import TaskPage from "./pages/TaskPage/TaskPage";
+import CalendarPage from "./pages/CalendarPage/CalendarPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -42,6 +43,14 @@ function App() {
           element={
             <PrivateRoute>
               <TaskPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/calendar"
+          element={
+            <PrivateRoute>
+              <CalendarPage />
             </PrivateRoute>
           }
         />
