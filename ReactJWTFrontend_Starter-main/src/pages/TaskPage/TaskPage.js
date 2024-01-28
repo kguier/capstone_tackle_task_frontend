@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
+import TaskListForm from "../../components/TaskListForm/TaskListForm";
 
 const TaskPage = () => {
   const [user, token] = useAuth();
@@ -47,7 +48,8 @@ const TaskPage = () => {
   };
   return (
     <>
-      <p>Your Tasks</p>
+      <h2>Your Tasks</h2>
+      <h3>Add a List:</h3>
       <div className="container">
         <form className="form" onSubmit={handleSubmit}>
           <label>
@@ -63,8 +65,16 @@ const TaskPage = () => {
         </form>
       </div>
       <div>
+        <h3>Add Task to List:</h3>
+        <TaskListForm />
+      </div>
+      <div>
         {taskLists &&
-          taskLists.map((taskList) => <p key={taskList.id}>{taskList.name}</p>)}
+          taskLists.map((taskList) => (
+            <p key={taskList.id}>
+              {taskList.id} {taskList.name} {}
+            </p>
+          ))}
       </div>
     </>
   );
