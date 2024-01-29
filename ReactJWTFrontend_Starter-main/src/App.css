@@ -6,11 +6,13 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+  
 }
 
 html {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  background-color: grey
 }
 
 p {
@@ -19,17 +21,18 @@ p {
 
 button {
   background-color: transparent;
-  border: 2px solid darksalmon;
-  color: darksalmon;
+  border: 2px solid black;
+  color: black;
   font-size: 1rem;
   font-family: inherit;
-  max-width: 100px;
+  width: 150px;
+  height: 65px;
   padding: 0.5rem 0.5rem;
 }
 
 button:hover {
   cursor: pointer;
-  color: white;
+  color: black;
   background-color: darksalmon;
 }
 

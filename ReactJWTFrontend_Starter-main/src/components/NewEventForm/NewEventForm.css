@@ -1,7 +1,21 @@
 .eventform {
-    display: flex;
+  padding: 10px;  
+  display: flex;
     flex-direction: row;
     align-items: center;
+  max-width: 700px;
+}
+
+.label-title {
+  padding-right: 17px;
+}
+
+.label-datetime {
+  padding-right: 17px;
+}
+
+.label-description {
+  padding-right: 17px;
 }
 
 .newEventForm button {

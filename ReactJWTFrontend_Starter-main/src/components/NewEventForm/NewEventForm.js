@@ -42,9 +42,9 @@ const NewEventForm = ({ addEventToCalendar }) => {
 
   return (
     <>
-      <div className="container">
+      <div className="event-container">
         <form className="eventform" onSubmit={handleSubmit}>
-          <label>
+          <label className="label-title">
             Title:{""}
             <input
               type="text"
@@ -53,7 +53,7 @@ const NewEventForm = ({ addEventToCalendar }) => {
               onChange={handleInputChange}
             />
           </label>
-          <label>
+          <label className="label-datetime">
             Date/Time:{""}
             <input
               type="datetime-local"
@@ -62,7 +62,7 @@ const NewEventForm = ({ addEventToCalendar }) => {
               onChange={handleInputChange}
             />
           </label>
-          <label>
+          <label className="label-description">
             Description:{""}
             <input
               type="text"
