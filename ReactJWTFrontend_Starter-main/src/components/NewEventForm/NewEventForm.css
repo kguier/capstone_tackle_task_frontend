@@ -1,0 +1,18 @@
+.eventform {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.newEventForm button {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 0.4rem 0.5rem;
+  }
+  
+.newEventForm button:hover {
+    background: white;
+    color: darksalmon;
+    cursor: pointer;
+  }

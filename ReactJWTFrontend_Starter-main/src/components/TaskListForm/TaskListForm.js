@@ -64,13 +64,12 @@ const TaskListForm = () => {
               onChange={handleInputChange}
             />
           </label>
-
           <label>
-            Complete: True/False?:{""}
+            Completed?:
             <input
-              type="bool"
+              type="checkbox"
               name="isComplete"
-              value={formData.IsComplete}
+              checked={formData.isComplete}
               onChange={handleInputChange}
             />
           </label>

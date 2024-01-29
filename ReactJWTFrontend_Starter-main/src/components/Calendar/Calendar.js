@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import NewEventForm from "../NewEventForm/NewEventForm";
+import "./Calendar.css";
 
 const Calendar = () => {
   const calendarRef = useRef(null);

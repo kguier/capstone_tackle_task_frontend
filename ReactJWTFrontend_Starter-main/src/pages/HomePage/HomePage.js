@@ -32,15 +32,6 @@ const HomePage = () => {
     <div className="container">
       {console.log(user)}
       <h1>Home Page for {user.userName}!</h1>
-      <Link to="/calendar">
-        <b>My Calendar</b>
-      </Link>
-      <Link to="/tasks">
-        <b>My Tasks</b>
-      </Link>
-      <Link to="/journal">
-        <b>My Journal</b>
-      </Link>
 
       {cars &&
         cars.map((car) => (

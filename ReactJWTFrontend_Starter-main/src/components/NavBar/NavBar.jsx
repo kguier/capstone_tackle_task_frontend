@@ -15,6 +15,27 @@ const Navbar = () => {
             <b>TackleTask</b>
           </Link>
         </li>
+        <li className="calendar">
+          <Link
+            to="/calendar"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            <b>My Calendar</b>
+          </Link>
+        </li>
+        <li className="tasks">
+          <Link to="/tasks" style={{ textDecoration: "none", color: "white" }}>
+            <b>My Tasks</b>
+          </Link>
+        </li>
+        <li className="journal">
+          <Link
+            to="/journal"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            <b>My Journal</b>
+          </Link>
+        </li>
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>

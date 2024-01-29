@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
+import "./NewEventForm.css";
 
 const NewEventForm = ({ addEventToCalendar }) => {
   const [user, token] = useAuth();
@@ -42,7 +43,7 @@ const NewEventForm = ({ addEventToCalendar }) => {
   return (
     <>
       <div className="container">
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="eventform" onSubmit={handleSubmit}>
           <label>
             Title:{""}
             <input
