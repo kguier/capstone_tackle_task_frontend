@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import NewEventForm from "../NewEventForm/NewEventForm";
 
 const Calendar = () => {
   const calendarRef = useRef(null);
@@ -9,15 +10,10 @@ const Calendar = () => {
     { title: "Event 2", date: "2024-01-29" },
   ]);
 
-  const addEvent = () => {
-    const newEvent = () => {
-      const newEvent = { title: "New Event", date: "2024-01-30" };
-      setEvents((prevEvents) => [...prevEvents, newEvent]);
-    };
+  const addEventToCalendar = (newEvent) => {
+    setEvents((prevEvents) => [...prevEvents, newEvent]);
   };
-  useEffect(() => {
-    return () => {};
-  }, []);
+  console.log("Updated Events:", events);
   return (
     <div>
       <FullCalendar
@@ -26,7 +22,7 @@ const Calendar = () => {
         initialView="dayGridMonth"
         events={events}
       />
-      <button onClick={addEvent}>Add Event</button>
+      <NewEventForm addEventToCalendar={addEventToCalendar} />
     </div>
   );
 };

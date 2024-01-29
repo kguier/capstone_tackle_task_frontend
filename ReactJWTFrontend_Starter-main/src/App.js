@@ -13,6 +13,8 @@ import CalendarPage from "./pages/CalendarPage/CalendarPage";
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import TaskListForm from "./components/TaskListForm/TaskListForm";
+import NewEventForm from "./components/NewEventForm/NewEventForm";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
