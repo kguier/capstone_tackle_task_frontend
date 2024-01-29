@@ -3,6 +3,7 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 import TaskListForm from "../../components/TaskListForm/TaskListForm";
+import "./TaskPage.css";
 
 const TaskPage = () => {
   const [user, token] = useAuth();

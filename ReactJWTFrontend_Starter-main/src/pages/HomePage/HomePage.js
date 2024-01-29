@@ -31,7 +31,9 @@ const HomePage = () => {
   return (
     <div className="container">
       {console.log(user)}
-      <h1>Home Page for {user.userName}!</h1>
+      <h1 style={{ textDecoration: "none", color: "white" }}>
+        Welcome, {user.userName}!
+      </h1>
 
       {cars &&
         cars.map((car) => (

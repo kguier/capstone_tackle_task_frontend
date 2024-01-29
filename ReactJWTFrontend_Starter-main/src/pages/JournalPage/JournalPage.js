@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
+import "./JournalPage.css";
 
 const JournalPage = () => {
   const [user, token] = useAuth();
@@ -50,8 +51,7 @@ const JournalPage = () => {
   };
   return (
     <>
-      <p>Your Journal</p>
-      <div className="container">
+      <div className="journal-container">
         <form className="form" onSubmit={handleSubmit}>
           <label>
             Title:{" "}
@@ -83,11 +83,13 @@ const JournalPage = () => {
           <button>Add New Entry</button>
         </form>
       </div>
-      <div>
+      <div className="entries">
         {entries &&
           entries.map((entry) => (
-            <p key={entry.id}>
-              {entry.title} {entry.entryContent} {entry.timestamp}
+            <p key={entry.id} className="entry-item">
+              <li className="journal-list-item">{entry.title}</li>
+              <li className="journal-list-item">{entry.entryContent}</li>
+              <li className="journal-list-item">{entry.timestamp}</li>
             </p>
           ))}
       </div>

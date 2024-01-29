@@ -1,0 +1,28 @@
+.journal-container {
+    
+    display: flex;
+    margin-left: 15px;
+    justify-content: space-around;
+}
+
+.entries {
+    margin-top: 30px;
+    margin-left: 35px;    
+    display: flex;
+}
+
+.entry-item {
+    border: 2px solid darksalmon;
+    padding: 0.4rem 0.5rem;
+    display: flex;
+    justify-content: space-between;
+  list-style-type: none;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.journal-list-item {
+    background-color: transparent;
+  font-size: 1.25rem;
+}
