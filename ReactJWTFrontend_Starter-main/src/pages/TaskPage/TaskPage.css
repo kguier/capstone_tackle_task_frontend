@@ -1,0 +1,25 @@
+.task-page-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+.add-list-container {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-task-container {
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.task-list {
+    margin-top: 30px;
+    margin-left: 70px;
+}

@@ -49,27 +49,28 @@ const TaskPage = () => {
   };
   return (
     <>
-      <h2>Your Tasks</h2>
-      <h3>Add a List:</h3>
-      <div className="container">
-        <form className="form" onSubmit={handleSubmit}>
-          <label>
-            List Name:{" "}
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-            />
-          </label>
-          <button>Add New List</button>
-        </form>
+      <div className="task-page-container">
+        <div className="add-list-container">
+          <h3>Add a List:</h3>
+          <form className="form" onSubmit={handleSubmit}>
+            <label>
+              List Name:{" "}
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+              />
+            </label>
+            <button>Add New List</button>
+          </form>
+        </div>
+        <div className="add-task-container">
+          <h3>Add Task to List:</h3>
+          <TaskListForm />
+        </div>
       </div>
-      <div>
-        <h3>Add Task to List:</h3>
-        <TaskListForm />
-      </div>
-      <div>
+      <div className="task-list">
         {taskLists &&
           taskLists.map((taskList) => (
             <p key={taskList.id}>
