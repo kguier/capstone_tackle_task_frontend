@@ -4,15 +4,17 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 import "./JournalPage.css";
+import EditEntryForm from "../../components/EditEntryForm/EditEntryForm";
 
 const JournalPage = () => {
-  const [user, token] = useAuth();
+  const { config, token } = useAuth();
   const [entries, setEntries] = useState([]);
+  const [editingEntryId, setEditingEntryId] = useState(null);
 
   const initialValues = {
     title: "",
     entryContent: "",
-    timestamp: "",
+    timestamp: new Date().toString(),
   };
 
   const [formData, handleInputChange, handleSubmit, reset] = useCustomForm(
@@ -25,11 +27,7 @@ const JournalPage = () => {
       let response = await axios.post(
         "https://localhost:5001/api/Entries",
         formData,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
+        config
       );
     } catch (error) {}
   }
@@ -39,16 +37,16 @@ const JournalPage = () => {
 
   const fetchEntries = async () => {
     try {
-      let response = await axios.get("https://localhost:5001/api/Entries", {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
+      let response = await axios.get(
+        "https://localhost:5001/api/Entries",
+        config
+      );
       setEntries(response.data);
     } catch (error) {
       console.log(error.response.data);
     }
   };
+
   return (
     <>
       <div className="journal-container">
@@ -71,26 +69,31 @@ const JournalPage = () => {
               onChange={handleInputChange}
             />
           </label>
-          <label>
-            Timestamp:{" "}
-            <input
-              type="text"
-              name="timestamp"
-              value={formData.timestamp}
-              onChange={handleInputChange}
-            />
-          </label>
+
           <button>Add New Entry</button>
         </form>
       </div>
       <div className="entries">
         {entries &&
           entries.map((entry) => (
-            <p key={entry.id} className="entry-item">
-              <li className="journal-list-item">{entry.title}</li>
-              <li className="journal-list-item">{entry.entryContent}</li>
-              <li className="journal-list-item">{entry.timestamp}</li>
-            </p>
+            <div key={entry.id} className="entry-item">
+              {editingEntryId === entry.id ? (
+                <EditEntryForm
+                  entry={entry}
+                  setEditingEntryId={setEditingEntryId}
+                  fetchEntries={fetchEntries}
+                />
+              ) : (
+                <>
+                  <li className="journal-list-item">{entry.title}</li>
+                  <li className="journal-list-item">{entry.entryContent}</li>
+                  <li className="journal-list-item">{entry.timestamp}</li>
+                  <button onClick={() => setEditingEntryId(entry.id)}>
+                    Edit
+                  </button>
+                </>
+              )}
+            </div>
           ))}
       </div>
     </>

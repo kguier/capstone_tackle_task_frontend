@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 
 const TaskListForm = () => {
-  const [user, token] = useAuth();
+  const { config, token } = useAuth();
   const [taskItems, setTaskItems] = useState([]);
 
   const initialValues = {
@@ -23,11 +23,7 @@ const TaskListForm = () => {
       let response = await axios.post(
         "https://localhost:5001/api/TaskItems",
         formData,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
+        config
       );
     } catch (error) {
       console.log(error.response.data);

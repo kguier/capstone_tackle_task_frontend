@@ -6,7 +6,7 @@ import TaskListForm from "../../components/TaskListForm/TaskListForm";
 import "./TaskPage.css";
 
 const TaskPage = () => {
-  const [user, token] = useAuth();
+  const { config, token } = useAuth();
   const [taskLists, setTaskLists] = useState([]);
 
   const initialValues = {
@@ -23,11 +23,7 @@ const TaskPage = () => {
       let response = await axios.post(
         "https://localhost:5001/api/TaskLists",
         formData,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
+        config
       );
     } catch (error) {}
   }
@@ -37,11 +33,10 @@ const TaskPage = () => {
 
   const fetchTaskLists = async () => {
     try {
-      let response = await axios.get("https://localhost:5001/api/TaskLists", {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
+      let response = await axios.get(
+        "https://localhost:5001/api/TaskLists",
+        config
+      );
       setTaskLists(response.data);
     } catch (error) {
       console.log(error.response.data);

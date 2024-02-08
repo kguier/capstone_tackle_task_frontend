@@ -4,8 +4,8 @@ import useAuth from "../../hooks/useAuth";
 import useCustomForm from "../../hooks/useCustomForm";
 import "./NewEventForm.css";
 
-const NewEventForm = ({ addEventToCalendar }) => {
-  const [user, token] = useAuth();
+const NewEventForm = ({ onNewEvent }) => {
+  const { config } = useAuth();
   const [events, setEvents] = useState([]);
 
   const initialValues = {
@@ -24,13 +24,9 @@ const NewEventForm = ({ addEventToCalendar }) => {
       let response = await axios.post(
         "https://localhost:5001/api/Events",
         formData,
-        {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        }
+        config
       );
-      addEventToCalendar(response.data);
+      onNewEvent();
 
       reset();
     } catch (error) {
@@ -38,7 +34,7 @@ const NewEventForm = ({ addEventToCalendar }) => {
     }
   }
 
-  useEffect(() => {}, [token]);
+  // useEffect(() => {}, [token]);
 
   return (
     <>
