@@ -5,10 +5,13 @@ import NewEventForm from "../NewEventForm/NewEventForm";
 import "./Calendar.css";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
+import EditEntryForm from "../EditEntryForm/EditEntryForm";
+import EventModal from "../EventModal/EventModal";
 
 const Calendar = () => {
   const calendarRef = useRef(null);
   const [events, setEvents] = useState([]);
+  const [activeEventId, setActiveEventId] = useState(0);
 
   const { config } = useAuth();
 
@@ -29,9 +32,19 @@ const Calendar = () => {
   }, []);
 
   const calendarEvents = events.map((event) => ({
-    title: event.title,
+    ...event,
     date: event.dateTime,
   }));
+
+  function handleEventClick(eventClickInfo) {
+    setActiveEventId(eventClickInfo.event.id);
+  }
+
+  const activeEvent = events.find((event) => event.id == activeEventId);
+
+  function handleClose() {
+    setActiveEventId(0);
+  }
 
   return (
     <div>
@@ -40,8 +53,10 @@ const Calendar = () => {
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
         events={calendarEvents}
+        eventClick={handleEventClick}
       />
       <NewEventForm onNewEvent={fetchEvents} />
+      <EventModal activeEvent={activeEvent} onClose={handleClose} />
     </div>
   );
 };

@@ -19,7 +19,7 @@ p {
   font-size: 20px;
 }
 
-button {
+/* button {
   background-color: transparent;
   border: 2px solid black;
   color: black;
@@ -34,7 +34,7 @@ button:hover {
   cursor: pointer;
   color: black;
   background-color: darksalmon;
-}
+} */
 
 .container {
   margin: 0 auto;
