@@ -5,7 +5,6 @@ import NewEventForm from "../NewEventForm/NewEventForm";
 import "./Calendar.css";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
-import EditEntryForm from "../EditEntryForm/EditEntryForm";
 import EventModal from "../EventModal/EventModal";
 
 const Calendar = () => {

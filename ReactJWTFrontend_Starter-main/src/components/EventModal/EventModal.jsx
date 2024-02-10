@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { Form } from "react-bootstrap";
+import EditEventForm from "../EditEventForm/EditEventForm";
 
 const EventModal = ({ activeEvent, onClose }) => {
   const show = Boolean(activeEvent);
@@ -11,7 +11,9 @@ const EventModal = ({ activeEvent, onClose }) => {
       <Modal.Header closeButton>
         <Modal.Title>Edit Event</Modal.Title>
       </Modal.Header>
-      <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+      <Modal.Body>
+        <EditEventForm activeEvent={activeEvent} />
+      </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={onClose}>
           Close
