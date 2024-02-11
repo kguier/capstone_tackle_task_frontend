@@ -45,6 +45,14 @@ const Calendar = () => {
     setActiveEventId(0);
   }
 
+  function handleUpdate(updatedEvent) {
+    const updatedEvents = events.map((event) =>
+      event.id === updatedEvent.id ? updatedEvent : event
+    );
+    setEvents(updatedEvents);
+    setActiveEventId(0);
+  }
+
   return (
     <div>
       <FullCalendar
@@ -55,7 +63,11 @@ const Calendar = () => {
         eventClick={handleEventClick}
       />
       <NewEventForm onNewEvent={fetchEvents} />
-      <EventModal activeEvent={activeEvent} onClose={handleClose} />
+      <EventModal
+        activeEvent={activeEvent}
+        onClose={handleClose}
+        handleUpdate={handleUpdate}
+      />
     </div>
   );
 };

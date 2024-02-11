@@ -1,37 +1,68 @@
 import axios from "axios";
-import useCustomForm from "../../hooks/useCustomForm";
 import useAuth from "../../hooks/useAuth";
 import { Form } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
+import { useState } from "react";
 
-const EditEventForm = ({ activeEvent }) => {
+const EditEventForm = ({ activeEvent, onUpdate }) => {
   const { config } = useAuth();
-  const handleUpdate = async (updatedData) => {
+  const [updatedTitle, setUpdatedTitle] = useState(activeEvent?.title || "");
+  const [updatedDateTime, setUpdatedDateTime] = useState(
+    activeEvent?.dateTime || ""
+  );
+  const [updatedDescription, setUpdatedDescription] = useState(
+    activeEvent?.description || ""
+  );
+
+  const handleUpdate = async () => {
     try {
+      const updatedData = {
+        title: updatedTitle,
+        dateTime: updatedDateTime,
+        description: updatedDescription,
+      };
+
       const response = await axios.put(
-        "https://localhost:5001/api/Events/${activeEvent.id}",
+        `https://localhost:5001/api/Events/${activeEvent.id}`,
         updatedData,
         config
       );
+
+      onUpdate(response.data);
     } catch (error) {
       console.error("Error updating event:", error.response.data);
     }
   };
 
-  const [formData, handleInputChange, handleSubmit, reset] = useCustomForm(
-    handleUpdate,
-    activeEvent
-  );
   return (
     <Form>
       <Form.Group className="edit-event" controlId="formBasicTitle">
         <Form.Label>Event Title</Form.Label>
-        <Form.Control type="text" placeholder="Enter New Event Title" />
+        <Form.Control
+          type="text"
+          placeholder="Enter New Event Title"
+          value={updatedTitle}
+          onChange={(e) => setUpdatedTitle(e.target.value)}
+        />
       </Form.Group>
 
       <Form.Group className="edit-event" controlId="formBasicDateTime">
         <Form.Label>Date/Time</Form.Label>
-        <Form.Control type="dateTime" placeholder="Enter New Date and Time" />
+        <Form.Control
+          type="dateTime-local"
+          placeholder="Enter New Date and Time"
+          value={updatedDateTime}
+          onChange={(e) => setUpdatedDateTime(e.target.value)}
+        />
+      </Form.Group>
+
+      <Form.Group className="edit-description" controlId="formBasicDescription">
+        <Form.Label>Event Description</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter New Event Description"
+          value={updatedDescription}
+          onChange={(e) => setUpdatedDescription(e.target.value)}
+        />
       </Form.Group>
     </Form>
   );
