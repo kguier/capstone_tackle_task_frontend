@@ -2,6 +2,7 @@ import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import { Form } from "react-bootstrap";
 import { useState } from "react";
+import Button from "react-bootstrap/Button";
 
 const EditEventForm = ({ activeEvent, onUpdate }) => {
   const { config } = useAuth();
@@ -14,8 +15,10 @@ const EditEventForm = ({ activeEvent, onUpdate }) => {
   );
 
   const handleUpdate = async () => {
+    console.log("Handle Update function called");
     try {
       const updatedData = {
+        id: activeEvent.id,
         title: updatedTitle,
         dateTime: updatedDateTime,
         description: updatedDescription,
@@ -64,6 +67,9 @@ const EditEventForm = ({ activeEvent, onUpdate }) => {
           onChange={(e) => setUpdatedDescription(e.target.value)}
         />
       </Form.Group>
+      <Button variant="primary" onClick={handleUpdate}>
+        Save Changes
+      </Button>
     </Form>
   );
 };

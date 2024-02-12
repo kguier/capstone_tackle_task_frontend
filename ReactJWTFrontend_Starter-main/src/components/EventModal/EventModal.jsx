@@ -19,9 +19,6 @@ const EventModal = ({ activeEvent, onClose, handleUpdate }) => {
         <Button variant="secondary" onClick={onClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={handleUpdate}>
-          Save Changes
-        </Button>
       </Modal.Footer>
     </Modal>
   );
